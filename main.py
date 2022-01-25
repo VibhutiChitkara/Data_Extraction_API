@@ -18,7 +18,7 @@ def details(url):
     player_details = []
     player_information = []
     officer_table = soup.find('table', {"class" : "table"})
-    #try clause to skip any companies with missing/empty board member tables
+    
 
     #loop through table, grab each of the 4 columns shown (try one of the links yourself to see the layout)
     for row in officer_table.find_all('tr'):
@@ -149,7 +149,7 @@ def details(url):
     merged_Frame.to_csv('player_details.csv')
 
     result = {"data": {"Team_Names": df.to_json(orient="split"), "Team_Player": df1.to_json(orient="split"), "Player_Details": merged_Frame.to_json(orient="split")}}
-    #result = str(df.to_json(orient="split"), df1.to_json(orient="split"), merged_Frame.to_json(orient="split"))
+    
 
     if (len(result) > 0):
             return True, result
